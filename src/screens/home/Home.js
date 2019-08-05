@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Image, FlatList } from 'react-native'
 import { Container, Content, Item, Input, Card, CardItem } from 'native-base';
+import { Button } from 'react-native-elements';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { getBook } from '../../public/redux/action/book'
 import { connect } from 'react-redux'
@@ -50,7 +51,7 @@ class Home extends Component {
                                                     }}
                                                     onPress={() => { this.props.navigation.navigate('Detail', { bookid: item }) }}>
                                                     <Card
-                                                        style={{ height: 'auto', width: 140, borderRadius: 20 }}
+                                                        style={{ height: 'auto', width: 140 }}
                                                         key={index}>
                                                         <CardItem cardBody>
                                                             <Image
@@ -67,6 +68,7 @@ class Home extends Component {
                             </View>
                         </Content>
                     </ScrollView>
+
                 </Container>
 
             </>

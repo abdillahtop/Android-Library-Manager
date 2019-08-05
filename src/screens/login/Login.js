@@ -1,23 +1,43 @@
 import React, { Component } from 'react'
-import { Image } from 'react-native';
+import { Image, Alert } from 'react-native';
+import { connect } from 'react-redux'
 import { Container, View, Item, Input, Button, Text, Label } from 'native-base';
 import { ScrollView } from 'react-native-gesture-handler';
+import { postLogin } from '../../public/redux/action/users';
 
-export default class Login extends Component {
+class Login extends Component {
+    constructor() {
+        super();
+        this.state = {
+            signs: [],
+            email: '',
+            password: ''
+        }
+    }
 
-    state = {
-        icon: "eye-off",
-        password: true
-    };
+    isLogin(data) {
+        this.props.dispatch(postLogin(data))
+        this.setState({
+            signs: this.props.sign
 
-    _changeIcon() {
-        this.setState(prevState => ({
-            icon: prevState.icon === 'eye' ? 'eye-off' : 'eye',
-            password: prevState.password
-        }));
+        })
+        this.props.navigation.navigate('Register')
+        Alert.alert(
+            'Success',
+            'Berhasil Login',
+            [
+                { text: 'OK', onPress: () => this.props.navigation.navigate('Home') },
+            ],
+            { cancelable: false },
+        );
     }
 
     render() {
+        const data = {
+            email: this.state.email,
+            password: this.state.password
+        }
+        console.warn(data)
         return (
             <Container>
                 <ScrollView>
@@ -27,27 +47,38 @@ export default class Login extends Component {
                         marginHorizontal: 20,
                     }}>
                         {/* <Icon name="heart" style={{ color: '#ED4A6A' }} /> */}
-                        <Image style={{ height: 150, width: 150, marginTop: 100 }} source={require('../../assets/reading.png')} />
-                        <Text >ACCESS LIBRARY</Text>
+                        <Image style={{ height: 150, width: 150, marginTop: 30 }} source={require('../../assets/reading.png')} />
+                        <Text style={{ fontWeight: '900', fontSize: 24, color: '#444', marginBottom: 20 }}>ACCESS LIBRARY</Text>
                         <Item floatingLabel style={{ marginBottom: 20 }}>
                             <Label style={{ paddingLeft: 20 }}>Email</Label>
-                            <Input style={{ paddingLeft: 20 }} />
+                            <Input style={{ paddingLeft: 20 }} onChangeText={email => this.setState({ email })} />
                         </Item>
                         <Item floatingLabel style={{ marginBottom: 20 }}>
                             <Label style={{ paddingLeft: 20 }}>Password</Label>
                             <Input
-                                secureTextEntry={this.state.password}
-                                style={{ paddingLeft: 20 }} />
+                                secureTextEntry={true}
+                                style={{ paddingLeft: 20 }}
+                                onChangeText={password => this.setState({ password })} />
                         </Item>
                         <Button
                             full
-                            onPress={() => this.props.navigation.navigate('Home')}
+                            onPress={() => this.isLogin(data)}
                             style={{
                                 backgroundColor: '#00C890',
                                 marginBottom: 20
                             }}
                         >
                             <Text>Login</Text>
+                        </Button>
+                        <Button
+                            full
+                            onPress={() => this.props.navigation.navigate('Register')}
+                            style={{
+                                backgroundColor: '#00C890',
+                                marginBottom: 20
+                            }}
+                        >
+                            <Text>Sign Up</Text>
                         </Button>
                     </View>
                 </ScrollView>
@@ -56,10 +87,10 @@ export default class Login extends Component {
     }
 }
 
-// const styles = StyleSheet.create({
-//     content: {
-//         flex: 1,
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//     }
-// })
+const mapStateToProps = state => {
+    return {
+        sign: state.sign.userList
+    };
+};
+
+export default connect(mapStateToProps)(Login);

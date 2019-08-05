@@ -7,7 +7,9 @@ import {
 } from 'react-navigation';
 
 import Histori from '../../screens/history/History'
+import Donate from '../../screens/home/Add'
 import Login from '../../screens/login/Login'
+import Register from '../../screens/login/Register'
 import Profile from '../../screens/profile/Profile'
 import Home from '../../screens/home/Home';
 import Detail from '../../screens/detail/Details';
@@ -15,6 +17,7 @@ import Detail from '../../screens/detail/Details';
 const HomeScreen = createStackNavigator(
     {
         Home: { screen: Home },
+        Donate: { screen: Donate },
         Detail: { screen: Detail },
     },
     {
@@ -28,21 +31,6 @@ const HomeScreen = createStackNavigator(
     }
 );
 
-// const AddStack = createStackNavigator(
-//   {
-//     Add: { screen: AddScreen },
-//   },
-//   {
-//     defaultNavigationOptions: {
-//       headerStyle: {
-//         backgroundColor: 'black',
-//       },
-//       headerTintColor: 'white',
-//       title: 'ADD',
-//     },
-//   }
-// );
-
 const BorrowScreen = createStackNavigator(
     {
         Borrow: { screen: Histori },
@@ -50,7 +38,7 @@ const BorrowScreen = createStackNavigator(
     {
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: 'black',
+                backgroundColor: '#00C890',
             },
             headerTintColor: 'white',
             title: 'BORROW',
@@ -60,6 +48,8 @@ const BorrowScreen = createStackNavigator(
 
 const ProfileScreen = createStackNavigator(
     {
+        Login: { screen: Login },
+        Register: { screen: Register },
         Profile: { screen: Profile },
         // Register: {screen: Register},
 
@@ -67,7 +57,7 @@ const ProfileScreen = createStackNavigator(
     {
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: 'black',
+                backgroundColor: '#00C890',
             },
             headerTintColor: 'white',
             title: 'PROFILE',
@@ -80,23 +70,18 @@ const switchNavigator = createBottomTabNavigator(
     {
 
         Home: { screen: HomeScreen },
-        // Add: { screen: AddStack },
         Borrow: { screen: BorrowScreen },
         Profile: { screen: ProfileScreen },
 
     },
     {
         defaultNavigationOptions: ({ navigation }) => ({
-            tabBarIcon: ({ focused, horizontal, tintColor }) => {
+            tabBarIcon: ({ tintColor }) => {
                 const { routeName } = navigation.state;
                 let IconComponent = Ionicons;
                 let iconName;
                 if (routeName === 'Home') {
-                    iconName = `ios-home`;
-                } else if (routeName === 'Search') {
-                    iconName = `ios-search`;
-                } else if (routeName === 'Add') {
-                    iconName = `ios-add-circle${focused ? '' : '-outline'}`;
+                    iconName = `ios-home`
                 } else if (routeName === 'Borrow') {
                     iconName = `md-bookmarks`;
                 } else if (routeName === 'Profile') {
@@ -106,7 +91,7 @@ const switchNavigator = createBottomTabNavigator(
             },
         }),
         tabBarOptions: {
-            activeTintColor: 'black',
+            activeTintColor: '#00C890',
             inactiveTintColor: 'gray',
         },
     }

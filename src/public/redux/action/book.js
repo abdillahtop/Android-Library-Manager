@@ -17,7 +17,7 @@ export const getBookSearch = (name) => {
 export const postBook = (data) => {
     return {
         type: 'POST_BOOK',
-        payload: axios.post(`http://localhost:2000/book`, { data })
+        payload: axios.post(`https://api-library-abdi.herokuapp.com/book`, data)
     }
 }
 

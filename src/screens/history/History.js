@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { View, Image } from 'react-native'
 import { Container, Content, Text, } from 'native-base';
 
 export default class History extends Component {
@@ -8,10 +8,14 @@ export default class History extends Component {
         return (
             <Container>
                 <Content style={{ marginHorizontal: 20 }}>
-                    <View>
-                        <Text style={{ fontSize: 50 }}>
-                            Ini History
-                        </Text>
+                    <View style={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginHorizontal: 20,
+                        marginTop: 60
+                    }}>
+                        <Image style={{ height: 200, width: 120, marginTop: 60 }} source={require('../../assets/error.png')} />
+                        <Text style={{ fontWeight: '900', fontSize: 24, color: '#444', marginTop: 20 }}>Dalam Pengembangan</Text>
                     </View>
                 </Content>
             </Container>
