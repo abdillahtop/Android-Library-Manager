@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { View, Text, AsyncStorage } from 'react-native'
 import {
     createStackNavigator,
     createBottomTabNavigator,
     createAppContainer,
+    createSwitchNavigator
 } from 'react-navigation';
 
 import Histori from '../../screens/history/History'
@@ -15,6 +17,7 @@ import Home from '../../screens/home/Home';
 import Detail from '../../screens/detail/Details';
 
 const HomeScreen = createStackNavigator(
+
     {
         Home: { screen: Home },
         Donate: { screen: Donate },
@@ -22,6 +25,11 @@ const HomeScreen = createStackNavigator(
     },
     {
         defaultNavigationOptions: {
+            headerRight: (
+                <View style={{ marginRight: 30 }}>
+                    <Text style={{ color: 'white', fontSize: 18 }}>Welcome, Guest</Text>
+                </View>
+            ),
             headerStyle: {
                 backgroundColor: '#00C890',
             },
@@ -48,8 +56,6 @@ const BorrowScreen = createStackNavigator(
 
 const ProfileScreen = createStackNavigator(
     {
-        Login: { screen: Login },
-        Register: { screen: Register },
         Profile: { screen: Profile },
         // Register: {screen: Register},
 
@@ -64,7 +70,6 @@ const ProfileScreen = createStackNavigator(
         },
     }
 );
-
 
 const switchNavigator = createBottomTabNavigator(
     {
@@ -97,4 +102,11 @@ const switchNavigator = createBottomTabNavigator(
     }
 );
 
-export default createAppContainer(switchNavigator);
+const AppSwitchNavigator = createSwitchNavigator({
+    Welcome: { screen: Login },
+    Register: { screen: Register },
+    Home: { screen: switchNavigator }
+});
+
+
+export default createAppContainer(AppSwitchNavigator);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Image, FlatList } from 'react-native'
-import { Container, Content, Item, Input, Card, CardItem } from 'native-base';
-import { Button } from 'react-native-elements';
+import { Container, Content, Item, Input, Card, CardItem, Fab } from 'native-base';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { getBook } from '../../public/redux/action/book'
 import { connect } from 'react-redux'
@@ -56,7 +56,7 @@ class Home extends Component {
                                                         <CardItem cardBody>
                                                             <Image
                                                                 style={{ height: 200, width: 140 }}
-                                                                source={{ uri: item.image }} />
+                                                                source={{ uri: 'https://api-library-abdi.herokuapp.com/' + item.image }} />
                                                         </CardItem>
                                                     </Card>
                                                 </TouchableOpacity>
@@ -68,9 +68,19 @@ class Home extends Component {
                             </View>
                         </Content>
                     </ScrollView>
-
+                    {/* <Button
+                        title="+"
+                        type="outline"
+                        onPress={() => { this.props.navigation.navigate('Donate') }}
+                    /> */}
                 </Container>
+                <Fab
+                    style={{ backgroundColor: '#00C890' }}
+                    position='bottomRight'
+                    onPress={() => this.props.navigation.navigate('Donate')}>
+                    <Ionicons size={30} name="ios-add" />
 
+                </Fab>
             </>
         )
     }
