@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Alert } from 'react-native'
-import { Input, Item, View, Icon, H3, Form, Textarea, Picker, Button, Text, Toast } from 'native-base';
+import { Input, Item, View, H3, Button, Text } from 'native-base';
 import { connect } from 'react-redux'
 import { ScrollView } from 'react-native-gesture-handler';
 import { postRegister } from '../../public/redux/action/users';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 class AddBook extends Component {
     constructor() {
@@ -38,6 +39,13 @@ class AddBook extends Component {
         return (
             <ScrollView>
                 <View>
+                    <View style={{ paddingLeft: 30, paddingTop: 20 }}>
+                        <Ionicons
+                            onPress={() => this.props.navigation.navigate('Login')}
+                            name="ios-arrow-dropleft"
+                            size={35} color='#00C890'
+                        />
+                    </View>
                     <H3 style={{ textAlign: 'center', marginVertical: 20 }}>REGISTER</H3>
                     <View style={{ marginHorizontal: 15 }}>
                         <Item regular style={{ marginVertical: 8 }}>

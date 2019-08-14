@@ -87,7 +87,7 @@ class Login extends Component {
                             <Text>Login</Text>
                         </Button>
                         <Text style={{ fontSize: 15, color: '#343634' }}>
-                            If you did't have account, Sign Up Here
+                            If you did't have account, Sign Up <Text onPress={() => this.props.navigation.navigate('Register')}> Here</Text>
                         </Text>
                     </View>
                 </ScrollView>

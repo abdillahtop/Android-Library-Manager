@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { StyleSheet, FlatList, Text, View, Image, ActivityIndicator, TouchableOpacity } from 'react-native'
+import { getBook, getMoreBook } from '../../public/redux/action/book'
 import { Input, Card, CardItem, Fab, Item } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import axios from 'axios';
 
 export default class Home extends Component {
     constructor() {

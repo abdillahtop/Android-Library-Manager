@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { View, Text, AsyncStorage } from 'react-native'
+import { View, Text } from 'react-native'
 import {
     createStackNavigator,
     createBottomTabNavigator,
@@ -25,11 +25,6 @@ const HomeScreen = createStackNavigator(
     },
     {
         defaultNavigationOptions: {
-            headerRight: (
-                <View style={{ marginRight: 30 }}>
-                    <Text style={{ color: 'white', fontSize: 18 }}>Welcome, Guest</Text>
-                </View>
-            ),
             headerStyle: {
                 backgroundColor: '#00C890',
             },
@@ -57,6 +52,7 @@ const BorrowScreen = createStackNavigator(
 const ProfileScreen = createStackNavigator(
     {
         Profile: { screen: Profile },
+        // Login: { screen: Login }
         // Register: {screen: Register},
 
     },
@@ -103,7 +99,7 @@ const switchNavigator = createBottomTabNavigator(
 );
 
 const AppSwitchNavigator = createSwitchNavigator({
-    Welcome: { screen: Login },
+    Login: { screen: Login },
     Register: { screen: Register },
     Home: { screen: switchNavigator }
 });

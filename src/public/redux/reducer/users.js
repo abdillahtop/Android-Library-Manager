@@ -48,6 +48,7 @@ const user = (state = initialState, action) => {
             AsyncStorage.setItem('Cardid', action.payload.data.result.id_card.toString())
             AsyncStorage.setItem('Token', action.payload.data.result.token)
             AsyncStorage.setItem('Name', action.payload.data.result.fullname)
+            AsyncStorage.setItem('Verified', action.payload.data.result.is_verified.toString())
             return {
                 ...state,
                 isLoading: false,

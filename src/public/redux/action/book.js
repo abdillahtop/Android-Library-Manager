@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-export const getBook = () => {
+export const getBook = (limit) => {
     return {
         type: 'GET_BOOK',
-        payload: axios.get(`https://api-library-abdi.herokuapp.com/book/all`)
+        payload: axios.get(`https://api-library-abdi.herokuapp.com/book/all?limit=${limit}`)
     }
 }
 

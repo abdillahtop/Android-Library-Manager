@@ -1,5 +1,6 @@
 const initialState = {
     bookList: [],
+    moreList: [],
     isLoading: false,
     isFulfilled: false,
     isRejected: false,
@@ -26,6 +27,26 @@ const book = (state = initialState, action) => {
                 isLoading: false,
                 isFulfilled: true,
                 bookList: action.payload.data.result,
+            }
+        case 'GET_MORE_BOOK_PENDING':
+            return {
+                ...state,
+                isLoading: true,
+                isFulfilled: false,
+                isRejected: false
+            }
+        case 'GET_MORE_BOOK_REJECTED':
+            return {
+                ...state,
+                isLoading: false,
+                isRejected: true,
+            }
+        case 'GET_MORE_BOOK_FULFILLED':
+            return {
+                ...state,
+                isLoading: false,
+                isFulfilled: true,
+                moreList: action.payload.data.result,
             }
         case 'POST_BOOK_PENDING':
             return {
