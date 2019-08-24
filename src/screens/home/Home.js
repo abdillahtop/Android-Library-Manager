@@ -28,7 +28,7 @@ export default class Home extends Component {
                     data: this.state.data.concat(responseJson.result)
                 })
             })
-
+            /
     }
 
     renderRow = ({ item }) => {
