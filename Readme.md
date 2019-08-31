@@ -37,11 +37,11 @@ Library is a mobile app based library application where we can monitor what book
 
 ## Screenshots
 <div align="center">
-    <img width="250" src="./src/Assets/screenshot/login.png"> 
-    <img width="250" src="./src/Assets/screenshot/home.png">
-    <img width="250" src="./src/Assets/screenshot/detail.png">
-    <img width="250" src="./src/Assets/screenshot/borrow.png">
-    <img width="250" src="./src/Assets/screenshot/profile.png">
+    <img width="250" src="./src/assets/screenshot/login.png"> 
+    <img width="250" src="./src/assets/screenshot/home.png">
+    <img width="250" src="./src/assets/screenshot/detail.png">
+    <img width="250" src="./src/assets/screenshot/borrow.png">
+    <img width="250" src="./src/assets/screenshot/profile.png">
 </div>
 
 
